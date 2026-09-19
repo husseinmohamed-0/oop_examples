@@ -1,52 +1,19 @@
-// Composition
-class Engine {
-  String type;
+import 'package:flutter/material.dart';
 
-  Engine(this.type);
-
-  void startEngine() {
-    print('$type engine is starting...');
-  }
-}
-
-// Abstraction
-abstract class Car {
-  String brand;
-  Engine engine;
-
-  Car(this.brand, this.engine);
-
-  void start();
-
-  void showInfo() {
-    print('Brand: $brand');
-    print('Engine: ${engine.type}');
-  }
-}
-
-// Inheritance
-class ElectricCar extends Car {
-  int battery;
-
-  ElectricCar(String brand, Engine engine, this.battery) : super(brand, engine);
-
-  @override
-  void start() {
-    engine.startEngine();
-    print('$brand electric car is ready to drive');
-  }
-
-  void showBattery() {
-    print('Battery: $battery%');
-  }
-}
+import 'screens/products_screen.dart';
 
 void main() {
-  Engine engine = Engine('Electric');
+  runApp(const MyApp());
+}
 
-  ElectricCar car = ElectricCar('Tesla', engine, 90);
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  car.showInfo();
-  car.start();
-  car.showBattery();
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const ProductsScreen(),
+    );
+  }
 }
